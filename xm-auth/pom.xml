@@ -19,6 +19,11 @@
             <artifactId>xm-base</artifactId>
             <version>${xm.starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.xm.starter</groupId>
+            <artifactId>xm-web-config</artifactId>
+            <version>${xm.starter.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

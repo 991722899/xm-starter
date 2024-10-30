@@ -11,9 +11,11 @@ import com.xm.starter.request.log.model.RequestLogOutputDTO;
 import com.xm.starter.request.log.model.RequestLogProperties;
 import com.xm.starter.request.log.service.RequestLogOutputService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
+import org.springframework.web.util.UrlPathHelper;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -29,10 +31,13 @@ import java.util.List;
 public class RequestLogFilter implements Filter {
     private RequestLogOutputService requestLogOutputService;
     private RequestLogProperties requestLogProperties;
+    private final AntPathMatcher pathMatcher = new AntPathMatcher();
+    private UrlPathHelper urlPathHelper;
 
-    public RequestLogFilter(RequestLogOutputService requestLogOutputService, RequestLogProperties requestLogProperties) {
+    public RequestLogFilter(RequestLogOutputService requestLogOutputService, RequestLogProperties requestLogProperties,UrlPathHelper urlPathHelper) {
         this.requestLogOutputService = requestLogOutputService;
         this.requestLogProperties = requestLogProperties;
+        this.urlPathHelper = urlPathHelper;;
     }
 
     @Override
@@ -41,6 +46,19 @@ public class RequestLogFilter implements Filter {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+        //过滤不需要记录日志的地址
+        if (CollUtil.isNotEmpty(requestLogProperties.getExcludeUrlPatterns())) {
+            // 获取请求的实际路径
+            String lookupPath = urlPathHelper.getLookupPathForRequest(httpServletRequest);
+            for (String pattern : requestLogProperties.getExcludeUrlPatterns()) {
+                if (pathMatcher.match(pattern, lookupPath)) {
+                    chain.doFilter(httpServletRequest,httpServletResponse);
+                    return;
+                }
+            }
+        }
+
 
         ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(httpServletRequest);
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(httpServletResponse);

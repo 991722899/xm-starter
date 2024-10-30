@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.util.UrlPathHelper;
 
 @Configuration
 @ComponentScan(value = "com.xm.starter.request.log")
@@ -19,12 +20,12 @@ import org.springframework.context.annotation.Configuration;
 public class RequestLogConfiguration {
 
     @Bean
-    public FilterRegistrationBean requestLogFilter(RequestLogProperties requestLogProperties,RequestLogOutputService requestLogOutputService){
+    public FilterRegistrationBean requestLogFilter(RequestLogProperties requestLogProperties, RequestLogOutputService requestLogOutputService, UrlPathHelper urlPathHelper){
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setUrlPatterns(requestLogProperties.getFilterUrlPatterns());
         filterRegistrationBean.setName(requestLogProperties.getFilterName());
         filterRegistrationBean.setOrder(requestLogProperties.getFilterOrder());
-        filterRegistrationBean.setFilter(new RequestLogFilter(requestLogOutputService,requestLogProperties));
+        filterRegistrationBean.setFilter(new RequestLogFilter(requestLogOutputService,requestLogProperties,urlPathHelper));
         return filterRegistrationBean;
     }
 }
