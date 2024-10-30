@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.xm.starter.logback.output.config.LogbackOutputConfiguration

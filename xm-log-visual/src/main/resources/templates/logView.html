@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>
+        Log View
+    </title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <script type="text/javascript">
+        let init = 0;
+        let path = "";
+        function getFileInfo(data){
+            $.ajax({
+                url: "http://localhost:8080/api/logVisual/read",
+                contentType: "application/json",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(data),
+                success: function (data) {
+                    if(data.fileInfos){
+                        $("#fileInfo").empty();
+                        for (let dataKey in data.fileInfos) {
+                            $("#fileInfo").append("<a href='javascript:void(0);' path='"+data.fileInfos[dataKey].path+"' class='dir'>"+data.fileInfos[dataKey].name+"</a><br>");
+                        }
+
+                        $(".dir").click(function(){
+                            path = $(this).attr("path");
+                            getFileInfo({path:path})
+                        })
+                    }else{
+                        if(init==0){
+                            init=1;
+                            setTimeout(function (){
+                                getFileInfo({offset:data.offset,path:path})
+                            },1000)
+                        }
+                        $("#logInfo").append("<div>"+data.logContent+"</div>");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+
+            })
+        }
+
+
+        $(document).ready(function(){
+            getFileInfo({});
+        })
+    </script>
+</head>
+<body>
+<h2>
+    <div id="fileInfo"></div>
+    <div id="logInfo" style="width: 80%;height: 700px;overflow: scroll;"></div>
+</h2>
+</body>
+</html>

@@ -1,0 +1,15 @@
+rocketmq:
+  name-server: 172.16.99.166:9876
+  producer:
+    group: local-test-producer
+    send-message-timeout: 10000
+xm:
+  starter:
+    rocketmq:
+      enable: true
+      consumeConfig:
+        test1:
+          topic: chen-task-center-topic-order
+          group: chen-mq-test
+          beanName: "testConsume"
+      profiles:

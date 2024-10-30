@@ -1,0 +1,16 @@
+xm:
+  starter:
+    sms:
+      enable: true
+      aliYun:
+        enable: true
+        accessKeyId: L123iKX5gG
+        accessKeySecret: c82XAyJI123w31W
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.99.82:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    password: root
+    username: root
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml

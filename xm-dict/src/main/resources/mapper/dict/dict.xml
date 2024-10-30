@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xm.starter.dict.mapper.DictMapper">
+
+    <resultMap id="listResultMap" type="com.xm.starter.dict.model.DictListVO">
+        <result column="id" property="id"/>
+        <result column="dict_label" property="dictLabel"/>
+        <result column="dict_value" property="dictValue"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+    <select id="list" resultType="com.xm.starter.dict.model.DictListVO" resultMap="listResultMap">
+        select * from sys_dict sd
+        <where>
+            <if test="query.dictLabel != null and query.dictLabel!=''">and sd.dict_key like concat('%',#{query.dictKey},'%')</if>
+            <if test="query.dictValue != null and query.dictValue!=''">and sd.dict_value = #{query.dictValue}</if>
+            <if test="query.parentId != null">and sd.parent_id=#{query.parentId}</if>
+        </where>
+    </select>
+
+
+    <select id="page" resultType="com.xm.starter.dict.model.DictListVO">
+        select * from sys_dict sd
+        <where>
+            <if test="query.dictLabel != null and query.dictLabel!=''">and sd.dict_key like concat('%',#{query.dictKey},'%')</if>
+            <if test="query.dictValue != null and query.dictValue!=''">and sd.dict_value = #{query.dictValue}</if>
+            <if test="query.parentId != null">and sd.parent_id=#{query.parentId}</if>
+        </where>
+    </select>
+</mapper>

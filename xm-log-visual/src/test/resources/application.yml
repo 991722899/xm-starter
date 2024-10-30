@@ -1,0 +1,7 @@
+xm:
+  starter:
+    log-visual:
+      enable: true
+      path:
+        - E:\logs\sc-scm
+        - E:\logs\sc-supplier

@@ -1,0 +1,23 @@
+/.idea/*
+/target/
+/.vscode
+# misc
+.DS_Store
+*bak
+.vscode
+# visual studio code
+.history
+*.log
+.temp/**
+# screenshot
+.firebase
+.eslintcache
+*.iml
+*.md
+target/
+mvnw
+*.cmd
+rebel.xml
+jrebel-classpath*.jar
+*.lck
+

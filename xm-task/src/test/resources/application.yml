@@ -1,0 +1,31 @@
+xm:
+  starter:
+    task:
+      enable: true
+      update-status-topic: chen-task-test-topic10086-update-status
+    rocketmq:
+      enable: true
+      consumeConfig:
+        default:
+          topic: chen-task-test-topic10086
+          group: chen-mq-tes11111
+          beanName: "taskListenerOrderly"
+          consumeMode: CONCURRENTLY
+          message-model: CLUSTERING
+        update-status:
+          topic: chen-task-test-topic10086-update-status
+          group: chen-mq-tes11111-update-status
+          beanName: "taskUpdateStatusListener"
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.99.82:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    password: root
+    username: root
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+rocketmq:
+  producer:
+    group: producer-task-center
+    send-message-timeout: 10000
+  name-server: 172.16.99.166:9876

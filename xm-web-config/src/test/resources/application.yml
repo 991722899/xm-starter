@@ -1,0 +1,7 @@
+xm:
+  starter:
+    web:
+      config:
+        enable: true
+        enableJacksonMapper: true
+

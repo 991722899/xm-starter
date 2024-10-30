@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xm.starter</groupId>
+        <artifactId>xm-starter</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>xm-logback-output</artifactId>
+    <description>logback日志输出扩展</description>
+    <version>${xm.starter.version}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.xm.starter</groupId>
+            <artifactId>xm-base</artifactId>
+            <version>${xm.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
+</project>

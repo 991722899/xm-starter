@@ -1,0 +1,14 @@
+xm:
+  starter:
+    xxljob:
+      enable: false
+      admin:
+        address: http://172.16.99.28:8080/xxl-job-admin
+      accessToken:
+      executor:
+        appName: xxl-job-executor-scm
+        address:
+        ip:
+        port: 7999
+        logPath:
+        logRetentionDays: 30
