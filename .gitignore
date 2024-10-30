@@ -13,7 +13,6 @@
 .firebase
 .eslintcache
 *.iml
-*.md
 target/
 mvnw
 *.cmd
