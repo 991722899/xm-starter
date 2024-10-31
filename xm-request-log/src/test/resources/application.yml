@@ -11,3 +11,10 @@ xm:
     request:
       log:
         enable: true
+        exclude-url-patterns:
+          - /test/**
+    web:
+      config:
+        enable: true
+        enableResponseBodyAdvice: true
+        enableJacksonMapper: true
