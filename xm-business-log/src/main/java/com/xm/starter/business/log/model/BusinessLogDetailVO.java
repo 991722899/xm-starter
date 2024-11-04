@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BusinessLogDetailVO extends BusinessLogPo {
+public class BusinessLogDetailVO extends BusinessDetailLogPO {
     private List<BusinessDetailLogListVo> details;
 }

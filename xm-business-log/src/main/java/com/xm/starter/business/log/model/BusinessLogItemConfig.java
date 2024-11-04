@@ -51,6 +51,14 @@ public class BusinessLogItemConfig {
      */
     private List<ItemPrimaryKeyType> itemPrimaryKeyTypes;
 
+    public BusinessLogItemConfig() {
+    }
+
+    public BusinessLogItemConfig(String name, String enName) {
+        this.name = name;
+        this.enName = enName;
+    }
+
     public BusinessLogItemConfig(String name, String enName, BusinessLogItemFormatter formatter) {
         this.name = name;
         this.enName = enName;
@@ -61,6 +69,13 @@ public class BusinessLogItemConfig {
         this.name = name;
         this.enName = enName;
         this.configs = configs;
+    }
+
+    public BusinessLogItemConfig(String name, String enName, List<BusinessLogItemConfig> configs, List<ItemPrimaryKeyType> itemPrimaryKeyTypes) {
+        this.name = name;
+        this.enName = enName;
+        this.configs = configs;
+        this.itemPrimaryKeyTypes = itemPrimaryKeyTypes;
     }
 
     public BusinessLogItemConfig(String name, String enName, List<BusinessLogItemConfig> configs, BusinessLogItemFormatter formatter) {
