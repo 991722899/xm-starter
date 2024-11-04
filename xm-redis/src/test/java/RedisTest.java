@@ -16,6 +16,7 @@ public class RedisTest {
 
     @Test
     public void  test(){
+        redisService.keyInfo("cache");
         QueryPage basePO = new QueryPage();
         basePO.setPageNum(1L);
         basePO.setPageSize(10L);
