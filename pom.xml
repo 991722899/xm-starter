@@ -46,6 +46,7 @@
         <module>xm-xxljob</module>
         <module>xm-web-config</module>
         <module>xm-area</module>
+        <module>xm-business-log</module>
     </modules>
 
 

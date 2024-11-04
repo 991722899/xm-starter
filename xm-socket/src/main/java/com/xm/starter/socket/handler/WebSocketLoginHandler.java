@@ -1,7 +1,6 @@
 package com.xm.starter.socket.handler;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.mysql.cj.util.EscapeTokenizer;
 import com.xm.starter.socket.enums.LoginStatus;
 import com.xm.starter.socket.event.WebSocketUserEvent;
 import com.xm.starter.socket.model.SocketUser;

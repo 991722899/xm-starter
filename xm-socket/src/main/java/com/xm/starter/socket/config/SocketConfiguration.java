@@ -10,17 +10,11 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.HttpObjectAggregator;
-import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
-import io.netty.handler.stream.ChunkedWriteHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplicationRunListener;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,7 +24,6 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 @Configuration
 @ComponentScan(value = "com.xm.starter.socket")
-@MapperScan(value = "com.xm.starter.socket.mapper")
 @ConditionalOnProperty(prefix = "xm.starter.socket",name = "enable",havingValue = "true")
 @EnableConfigurationProperties(SocketProperties.class)
 public class SocketConfiguration implements CommandLineRunner {
