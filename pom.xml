@@ -47,6 +47,7 @@
         <module>xm-web-config</module>
         <module>xm-area</module>
         <module>xm-business-log</module>
+        <module>xm-slow-sql</module>
     </modules>
 
 
