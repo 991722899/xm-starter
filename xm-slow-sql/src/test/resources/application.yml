@@ -11,3 +11,5 @@ xm:
     slow:
       sql:
         enable: true
+        exclude-mapper-id:
+          - 'com.xm.starter.slow.sql.mapper.SlowSqlMapper'

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xm.starter.slow.sql.mapper.SlowSqlMapper">
+
+    <sql id="where">
+        <where>
+
+        </where>
+    </sql>
+
+
+    <select id="page" resultType="com.xm.starter.slow.sql.model.SlowSqlListVO">
+        select * from sys_slow_sql sss
+        <include refid="where"></include>
+    </select>
+</mapper>

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(value = "com.xm.starter.slow.sql")
-@MapperScan(value = "com.xm.starter.slow.sql")
+@MapperScan(value = "com.xm.starter.slow.sql.mapper")
 @ConditionalOnProperty(prefix = "xm.starter.slow.sql",name = "enable",havingValue = "true")
 @EnableConfigurationProperties(SlowSqlProperties.class)
 public class SlowSqlConfiguration {

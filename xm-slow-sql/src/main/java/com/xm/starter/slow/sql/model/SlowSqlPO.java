@@ -9,4 +9,5 @@ public class SlowSqlPO extends BasePO {
     private String sqlText;
     private String stackInfo;
     private Long timeConsuming;
+    private String mapperId;
 }
